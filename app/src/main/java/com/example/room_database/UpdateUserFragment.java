@@ -40,22 +40,31 @@ public class UpdateUserFragment extends Fragment {
         BnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int id = Integer.parseInt(updateId.getText().toString());
+                String update_id = updateId.getText().toString();
                 String name = updateName.getText().toString();
                 String email = upDateEmail.getText().toString();
 
-                User user = new User();
+                if(update_id.matches("")||name.matches("")||email.matches(""))
+                {
+                    Toast.makeText(getActivity(),"Enter all credentials",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    User user = new User();
+                    int id = Integer.parseInt(updateId.getText().toString());
 
-                user.setId(id);
-                user.setName(name);
-                user.setEmail(email);
+                    user.setId(id);
+                    user.setName(name);
+                    user.setEmail(email);
 
-                MainActivity.myAppDatabase.myDao().updateUser(user);
-                Toast.makeText(getActivity(),"User info Updated",Toast.LENGTH_SHORT).show();
+                    MainActivity.myAppDatabase.myDao().updateUser(user);
+                    Toast.makeText(getActivity(),"User info Updated",Toast.LENGTH_SHORT).show();
 
-                updateId.setText("");
-                updateName.setText("");
-                upDateEmail.setText("");
+                    updateId.setText("");
+                    updateName.setText("");
+                    upDateEmail.setText("");
+                }
+
             }
         });
 

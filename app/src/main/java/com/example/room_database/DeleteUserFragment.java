@@ -39,14 +39,22 @@ public class DeleteUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                int id = Integer.parseInt(DeleteId.getText().toString());
-                User user = new User();
-                user.setId(id);
-                MainActivity.myAppDatabase.myDao().deleteUser(user);
+                String new_id = DeleteId.getText().toString();
+                if(new_id.matches(""))
+                {
+                    Toast.makeText(getActivity(),"Enter ID.",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    int id = Integer.parseInt(DeleteId.getText().toString());
+                    User user = new User();
+                    user.setId(id);
+                    MainActivity.myAppDatabase.myDao().deleteUser(user);
 
-                Toast.makeText(getActivity(),"User Deleted",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"User Deleted",Toast.LENGTH_SHORT).show();
 
-                DeleteId.setText("");
+                    DeleteId.setText("");
+                }
 
             }
         });
