@@ -35,6 +35,7 @@ public class AddUserFragment extends Fragment {
         userid = view.findViewById(R.id.txt_user_id);
         username = view.findViewById(R.id.txt_name);
         useremail = view.findViewById(R.id.txt_email);
+        bnSave = view.findViewById(R.id.bn_save_user);
 
         bnSave.setOnClickListener(new View.OnClickListener() {
             @Override

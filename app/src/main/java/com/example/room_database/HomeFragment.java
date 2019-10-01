@@ -9,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private Button BnAddUser;
+    private Button BnAddUser, BnReadUser, BnDelete, BnUpdate;
 
 
     public HomeFragment() {
@@ -30,6 +31,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
          View view = inflater.inflate(R.layout.fragment_home, container, false);
         BnAddUser = view.findViewById(R.id.bn_add_user);
         BnAddUser.setOnClickListener(this);
+
+        BnReadUser = view.findViewById(R.id.bn_view_users);
+        BnReadUser.setOnClickListener(this);
+
+        BnDelete = view.findViewById(R.id.bn_delete_user);
+        BnDelete.setOnClickListener(this);
+
+        BnUpdate = view.findViewById(R.id.bn_update_user);
+        BnUpdate.setOnClickListener(this);
+
         return view;
     }
 
@@ -39,6 +50,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         {
             case R.id.bn_add_user:
                 MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new AddUserFragment()).
+                        addToBackStack(null).commit();
+                break;
+            case R.id.bn_view_users:
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new ReadUserFragment()).
+                        addToBackStack(null).commit();
+                break;
+            case R.id.bn_delete_user:
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new DeleteUserFragment()).
+                        addToBackStack(null).commit();
+                break;
+            case R.id.bn_update_user:
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new UpdateUserFragment()).
                         addToBackStack(null).commit();
                 break;
         }
