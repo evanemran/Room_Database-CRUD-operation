@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +34,7 @@ public class AddUserFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_user, container, false);
-        userid = view.findViewById(R.id.txt_user_id);
+        userid = view.findViewById(R.id.txt_search_name);
         username = view.findViewById(R.id.txt_name);
         useremail = view.findViewById(R.id.txt_email);
         bnSave = view.findViewById(R.id.bn_save_user);
@@ -59,11 +57,11 @@ public class AddUserFragment extends Fragment {
                     {
                         Toast.makeText(getActivity(),"Invalid Email",Toast.LENGTH_SHORT).show();
                     }
-                    /*else if (userName.matches(namepattern))
+                    else if (!userName.matches(namepattern))
                     {
-                        Toast.makeText(getActivity(),"Invalid pattern",Toast.LENGTH_SHORT).show();
-                    }*/
-                    else
+                        Toast.makeText(getActivity(),"Invalid Name pattern",Toast.LENGTH_SHORT).show();
+                    }
+                    else if (userEmail.contains("@gmail.com")||userEmail.contains("@yahoo.com")||userEmail.contains("@hotmail.com")||userEmail.contains("@outlook.com"))
                     {
                         int userId = Integer.parseInt(userid.getText().toString());
                         User user = new User();
@@ -76,6 +74,10 @@ public class AddUserFragment extends Fragment {
                         userid.setText("");
                         username.setText("");
                         useremail.setText("");
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(),"Invalid Email",Toast.LENGTH_SHORT).show();
                     }
                 }
 

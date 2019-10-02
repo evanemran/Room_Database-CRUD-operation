@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/txt_user_id"
+        android:id="@+id/txt_search_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txt_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_user_id"
+        app:layout_constraintTop_toBottomOf="@+id/txt_search_name"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button

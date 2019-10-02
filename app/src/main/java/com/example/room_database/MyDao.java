@@ -22,4 +22,5 @@ public interface MyDao {
 
     @Update
     public void updateUser(User user);
+
 }
